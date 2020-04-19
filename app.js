@@ -34,6 +34,23 @@ app.get("/register",function(req,res){
     res.render("register");
 });
 
+
+//handling user sign up
+app.post("/register",function(req,res){
+    User.register(new User({username:req.body.username}),req.body.password,function(err,user){
+        if(err){
+            console.log(err);
+            res.render("register");
+        } else {
+            passport.authenticate("local")(req,res,function(){
+                res.send("Signed Up Succesfully");
+                res.render("/show");
+            });
+        }
+    });
+});
+
+
 //LOGIN ROUTES
 
 //Login form at root
