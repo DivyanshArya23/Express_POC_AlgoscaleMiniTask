@@ -9,6 +9,7 @@ var express                 =   require("express"),
 
 mongoose.connect("mongodb://localhost/minitask_algoscale",{ useNewUrlParser: true,useUnifiedTopology: true });
 app.set('view engine','ejs');
+app.use(express.static(__dirname + "/public"));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(require("express-session")({
