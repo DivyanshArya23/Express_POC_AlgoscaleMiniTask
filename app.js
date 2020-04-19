@@ -7,7 +7,7 @@ var express                 =   require("express"),
     passportLocalMongoose   =   require("passport-local-mongoose"),
     User                    =   require("./models/user");
 
-mongoose.connect("mongodb://localhost/auth_demo_app",{ useNewUrlParser: true,useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost/minitask_algoscale",{ useNewUrlParser: true,useUnifiedTopology: true });
 app.set('view engine','ejs');
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -28,8 +28,30 @@ passport.deserializeUser(User.deserializeUser());
 //ROUTES
 //=========================
 
+//SIGNUP ROUTES
+
+app.get("/register",function(req,res){
+    res.render("register");
+});
+
+//LOGIN ROUTES
+
+//Login form at root
 app.get("/",function(req,res){
-    res.send("home");
+    res.redirect("login");
+});
+
+
+//handle user login
+app.get("/login",function(req,res){
+    res.render("login");
+});
+
+//login logic
+app.post("/login",passport.authenticate("local",{
+    successRedirect: "/secret",
+    failureRedirect: "/register"
+}),function(req,res){
 });
 
 
