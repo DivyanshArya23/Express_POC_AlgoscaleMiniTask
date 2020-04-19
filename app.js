@@ -82,6 +82,16 @@ app.get("/show",function(req,res){
     });
 });
 
+//delete profile route
+app.get("/delete/:user_id",function(req,res){
+    User.findByIdAndRemove(req.params.user_id,function(err){
+        if(err){
+            res.send(err);
+        } else {
+            res.redirect("/show");
+        }
+    });
+});
 
 app.listen(3000,function(req,res){
     console.log("server started");
