@@ -97,6 +97,12 @@ app.get("/delete/:user_id",function(req,res){
     });
 });
 
+//logout route
+app.get("/logout",function(req,res){
+    req.logout();
+    res.redirect("/login");
+});
+
 app.listen(3000,function(req,res){
     console.log("server started");
 });
