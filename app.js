@@ -78,15 +78,24 @@ app.post("/login",passport.authenticate("local",{
 }),function(req,res){
 });
 
-//show User ID
+//show User IDs
 app.get("/show",isLoggedIn,function(req,res){
     User.find({},function(err,allUsers){
         if(err){
             console.log(err);
         }
         else{
-            res.render("show",{Users:allUsers});
+            res.render("show",{Users:allUsers,foundUsers:allUsers});
         }
+    });
+});
+
+//show one userID
+app.post("/search",isLoggedIn,function(req,res){
+    User.find({username:req.body.searchvalue},function(err,foundUser){
+        User.find({},function(err,allUsers){
+            res.render("show",{foundUsers:foundUser,Users:allUsers});
+        });
     });
 });
 

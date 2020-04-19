@@ -1,4 +1,5 @@
 .panel-footer {
+    background-color: rgb(47, 94, 180);
     position:fixed;
    left:0px;
    bottom:-70px;
@@ -12,6 +13,7 @@
 }
 
 .footernote {
+    color: white;
     font-size: x-small;
 }
 
@@ -35,10 +37,10 @@
     -o-transition-duration: 0.5s;
 }
 
-/*
-   Multicoloured Hover Variations
-*/
-
+/* Hover Variations */
+#social-gh,#social-em{
+    color: #ffffff;
+}
 #social-gh:hover {
     color: #000000bc;
 }
