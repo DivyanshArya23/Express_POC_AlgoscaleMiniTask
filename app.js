@@ -35,6 +35,7 @@ app.use(function(req,res,next){
 //SIGNUP ROUTES
 
 app.get("/register",function(req,res){
+    req.logout();
     res.render("register");
 });
 
@@ -58,12 +59,14 @@ app.post("/register",function(req,res){
 
 //Login form at root
 app.get("/",function(req,res){
+    req.logout();
     res.redirect("login");
 });
 
 
 //handle user login
 app.get("/login",function(req,res){
+    req.logout();
     res.render("login");
 });
 
@@ -75,7 +78,7 @@ app.post("/login",passport.authenticate("local",{
 });
 
 //show User ID
-app.get("/show",function(req,res){
+app.get("/show",isLoggedIn,function(req,res){
     User.find({},function(err,allUsers){
         if(err){
             console.log(err);
@@ -102,6 +105,14 @@ app.get("/logout",function(req,res){
     req.logout();
     res.redirect("/login");
 });
+
+//middleware
+function isLoggedIn(req,res,next){
+    if (req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+};
 
 app.listen(3000,function(req,res){
     console.log("server started");
