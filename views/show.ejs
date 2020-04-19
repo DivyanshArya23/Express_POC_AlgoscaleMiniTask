@@ -1,0 +1,20 @@
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>View All User ID here</h1>
+        </div>
+    </header> 
+    <div class="row text-center">
+        <% Users.forEach(function(user){ %>
+            <div class="col-md-3 col-sm-6" style="display: flex;flex-wrap: wrap;">
+                <div class="thumbnail">
+                    <img src="<%=user.image %>">
+                    <div class="caption">
+                        <h4><%= user.username %></h4>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>

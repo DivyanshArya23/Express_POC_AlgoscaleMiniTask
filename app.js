@@ -43,8 +43,7 @@ app.post("/register",function(req,res){
             res.render("register");
         } else {
             passport.authenticate("local")(req,res,function(){
-                res.send("Signed Up Succesfully");
-                res.render("/show");
+                res.redirect("show");
             });
         }
     });
@@ -66,11 +65,22 @@ app.get("/login",function(req,res){
 
 //login logic
 app.post("/login",passport.authenticate("local",{
-    successRedirect: "/secret",
+    successRedirect: "/show",
     failureRedirect: "/register"
 }),function(req,res){
 });
 
+//show User ID
+app.get("/show",function(req,res){
+    User.find({},function(err,allUsers){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render("show",{Users:allUsers});
+        }
+    });
+});
 
 
 app.listen(3000,function(req,res){
