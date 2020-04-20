@@ -57,7 +57,6 @@ app.post("/register",function(req,res){
     });
 });
 
-
 //LOGIN ROUTES
 
 //Login form at root
@@ -87,11 +86,11 @@ app.get("/show",isLoggedIn,function(req,res){
             console.log(err);
         }
         else{
-            res.render("show",{Users:allUsers,foundUsers:allUsers});
+            res.render("show",{Users:allUsers,foundUsers:allUsers,User:User});
         }
     });
 });
-
+// User.findOne
 //show one userID
 app.post("/search",isLoggedIn,function(req,res){
     User.find({username:req.body.searchvalue},function(err,foundUser){

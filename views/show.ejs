@@ -22,23 +22,28 @@
     </div>
     <div class="row text-center">
         <% foundUsers.forEach(function(user){ %>
-            <div class="card p-1" style="width: 12rem;">
+            <div class="card p-1 m-1" style="width: 13rem;">
                 <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-center"><%= user.alias %></h5>
                     <a class="btn btn-sm btn-danger" href="delete/<%=user._id%>">Delete</a>           
                 </div>
             </div>
-            <!-- <div class="col-md-3 col-sm-6" style="display: flex;flex-wrap: wrap;">
-                <div class="thumbnail usercard">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
-                    <div class="caption">
-                        <h4></h4>
-                    </div>
-                </div>
-            </div> -->
         <% }); %>
     </div>
 </div>
+<script>
+    var options = $('option');
+var arr = options.map(function(_, o) { return { t: $(o).text(), v: o.value }; }).get();
+arr.sort(function(o1, o2) {
+  var t1 = o1.t.toLowerCase(), t2 = o2.t.toLowerCase();
+
+  return t1 > t2 ? 1 : t1 < t2 ? -1 : 0;
+});
+options.each(function(i, o) {
+  o.value = arr[i].v;
+  $(o).text(arr[i].t);
+});
+</script>
 
 <%- include("./partials/footer.ejs")%>
