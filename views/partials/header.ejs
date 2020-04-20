@@ -2,29 +2,39 @@
 <html lang="en">
     <head>
         <title>MiniTask</title>
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="/stylesheets/main.css">
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
         <script src="https://kit.fontawesome.com/c89f2f494b.js" crossorigin="anonymous"></script>
+        
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">AlgoScale MiniTask</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <% if(!currentUser){ %>
-                            <li><a href="/login">LogIn</a></li>
-                            <li><a href="/register">Register</a></li>
-                        <% } else { %>
-                            <li><a href="#">Signed in As <%=currentUser.username%></a></li>
-                            <li><a href="/logout">LogOut</a></li>
-                        <% } %>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- <a class="navbar-brand" href="#"> <img src="https://algoscale.com/wp-content/uploads/backup/resources/logo-white.png" alt=""> MiniTask</a> -->
+            <a class="navbar-brand" href="#"> <img src="https://algoscale.com/wp-content/uploads/2019/11/logo.png" alt=""> MiniTask</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <% if(!currentUser){ %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">LogIn</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Signed in As <%=currentUser.username%></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">LogOut</a>
+                        </li>
+                    <% } %>
+                </ul>
             </div>
         </nav>      

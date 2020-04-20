@@ -48,6 +48,8 @@ app.post("/register",function(req,res){
             console.log(err);
             res.render("register");
         } else {
+            user.alias=req.body.Alias;
+            user.save();
             passport.authenticate("local")(req,res,function(){
                 res.redirect("show");
             });

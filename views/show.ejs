@@ -22,15 +22,21 @@
     </div>
     <div class="row text-center">
         <% foundUsers.forEach(function(user){ %>
-            <div class="col-md-3 col-sm-6" style="display: flex;flex-wrap: wrap;">
+            <div class="card p-1" style="width: 12rem;">
+                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><%= user.alias %></h5>
+                    <a class="btn btn-sm btn-danger" href="delete/<%=user._id%>">Delete</a>           
+                </div>
+            </div>
+            <!-- <div class="col-md-3 col-sm-6" style="display: flex;flex-wrap: wrap;">
                 <div class="thumbnail usercard">
                     <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
                     <div class="caption">
-                        <h4><%= user.username %></h4>
+                        <h4></h4>
                     </div>
-                    <a class="btn btn-sm btn-danger" href="delete/<%=user._id%>">Delete</a>
                 </div>
-            </div>
+            </div> -->
         <% }); %>
     </div>
 </div>
